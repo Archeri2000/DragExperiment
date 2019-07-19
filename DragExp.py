@@ -13,6 +13,7 @@ STEADY_TIME = 10
 FINAL_RPM = 300
 PORT = "COM5"
 OUT_FILE = "output.csv"
+SYSROK_ADDR = "'D:\Program Files (x86)\sigrok\sigrok-cli\sigrok-cli'"
 reading_list = []
 ACCEL = "ACCEL"
 DECEL = "DECEL"
@@ -47,6 +48,10 @@ def configureVariable(name, value):
     elif name == "OUT_FILE":
         global OUT_FILE
         OUT_FILE = value
+    elif name == "SYSROK_ADDR":
+        global SYSROK_ADDR
+        SYSROK_ADDR = value
+
 
 def printVars():
     print("Starting experiment with:")
@@ -59,6 +64,7 @@ def printVars():
     print("FINAL_RPM", FINAL_RPM)
     print("PORT", PORT)
     print("OUT_FILE", OUT_FILE)
+    print("SYSROK_ADDR", SYSROK_ADDR)
 
 # Manages callbacks from tachometer
 class CallbackManager:

@@ -26,3 +26,6 @@ PORT = COM5
 
 # Output file name (should end in CSV)
 OUT_FILE = smoothMetal4000.csv
+
+# Sysrok CLI location
+SYSROK_ADDR = 'D:\Program Files (x86)\sigrok\sigrok-cli\sigrok-cli'

@@ -10,7 +10,9 @@ SYSROK_CLI = ['D:\Program Files (x86)\sigrok\sigrok-cli\sigrok-cli', '-d', CONST
 class Tachometer:
 
     # Initialises Tachometer with stdout callbacks
-    def __init__(self, callback):
+    def __init__(self, callback, addr=None):
+        if addr is not None:
+            SYSROK_CLI[0] = addr
         self.startTime = time.time()
         self.callback = callback
         pass
@@ -18,7 +20,7 @@ class Tachometer:
     # Begins monitoring Tachometer stdout
     def startMonitoring(self):
         try:
-            print("trying")
+            print("Begin Monitoring")
             print(SYSROK_CLI)
             proc = subprocess.Popen(SYSROK_CLI, stdout=subprocess.PIPE)
             while proc.poll() is None:
