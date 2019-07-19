@@ -18,19 +18,47 @@ ACCEL = "ACCEL"
 DECEL = "DECEL"
 CALIB = "CALIB"
 
-varMap = {"START_ACCEL": START_ACCEL,
-          "RPM_TOLERANCE": RPM_TOLERANCE,
-          "TIME_TOLERANCE": TIME_TOLERANCE,
-          "MAX_RPM": MAX_RPM,
-          "START_RPM": START_RPM,
-          "STEADY_TIME": STEADY_TIME,
-          "FINAL_RPM": FINAL_RPM,
-          "PORT": PORT,
-          "OUT_FILE": OUT_FILE}
 
 def configureVariable(name, value):
+    if name == "START_ACCEL":
+        global START_ACCEL
+        START_ACCEL = int(value)
+    elif name == "RPM_TOLERANCE":
+        global RPM_TOLERANCE
+        RPM_TOLERANCE = int(value)
+    elif name == "TIME_TOLERANCE":
+        global TIME_TOLERANCE
+        TIME_TOLERANCE = int(value)
+    elif name == "MAX_RPM":
+        global MAX_RPM
+        MAX_RPM = int(value)
+    elif name == "START_RPM":
+        global START_RPM
+        START_RPM = int(value)
+    elif name == "STEADY_TIME":
+        global STEADY_TIME
+        STEADY_TIME = int(value)
+    elif  name == "FINAL_RPM":
+        global FINAL_RPM
+        FINAL_RPM = int(value)
+    elif name == "PORT":
+        global PORT
+        PORT = value
+    elif name == "OUT_FILE":
+        global OUT_FILE
+        OUT_FILE = value
 
-
+def printVars():
+    print("Starting experiment with:")
+    print("START_ACCEL", START_ACCEL)
+    print("RPM_TOLERANCE", RPM_TOLERANCE)
+    print("TIME_TOLERANCE", TIME_TOLERANCE)
+    print("MAX_RPM", MAX_RPM)
+    print("START_RPM", START_RPM)
+    print("STEADY_TIME", STEADY_TIME)
+    print("FINAL_RPM", FINAL_RPM)
+    print("PORT", PORT)
+    print("OUT_FILE", OUT_FILE)
 
 # Manages callbacks from tachometer
 class CallbackManager:
@@ -131,7 +159,15 @@ post = None
 def main():
     args = sys.argv[1:]
     f = open(args[0], "r")
-
+    for line in f.readlines():
+        if line[0] == '#':
+            continue
+        if line[-1] == '\n':
+            line = line[:-1]
+        arg = line.split(" = ")
+        if len(arg) == 2:
+            configureVariable(arg[0], arg[1])
+    printVars()
     global ardu, post
     ardu = Arduino(PORT)
     post = PostProcess(OUT_FILE)

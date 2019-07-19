@@ -1,0 +1,28 @@
+# Set starting parameters here
+#
+# Starting acceleration count
+START_ACCEL = 15
+
+# RPM Tolerance for steady state
+RPM_TOLERANCE = 50
+
+# Time required for RPM within tolerance to be considered steady
+TIME_TOLERANCE = 3
+
+# Maximum RPM to hit before calibration
+MAX_RPM = 4000
+
+# RPM for start of experiment (Usually same as MAX)
+START_RPM = 4000
+
+# Steady time before experiment starts
+STEADY_TIME = 10
+
+# Cutoff RPM for experiment
+FINAL_RPM = 200
+
+# Arduino PORT
+PORT = COM5
+
+# Output file name (should end in CSV)
+OUT_FILE = smoothMetal4000.csv
