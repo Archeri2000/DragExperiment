@@ -1,31 +1,31 @@
 # Set starting parameters here
 #
 # Starting acceleration count
-START_ACCEL = 15
+START_ACCEL = 10
 
 # RPM Tolerance for steady state
 RPM_TOLERANCE = 50
 
 # Time required for RPM within tolerance to be considered steady
-TIME_TOLERANCE = 3
+TIME_TOLERANCE = 4
 
 # Maximum RPM to hit before calibration
-MAX_RPM = 4000
+MAX_RPM = 5000
 
 # RPM for start of experiment (Usually same as MAX)
-START_RPM = 4000
+START_RPM = 5000
 
 # Steady time before experiment starts
-STEADY_TIME = 10
+STEADY_TIME = 2
 
 # Cutoff RPM for experiment
-FINAL_RPM = 200
+FINAL_RPM = 150
 
 # Arduino PORT
 PORT = COM5
 
 # Output file name (should end in CSV)
-OUT_FILE = smoothMetal4000.csv
+OUT_FILE = riblet2.csv
 
 # Sysrok CLI location
 SYSROK_ADDR = 'D:\Program Files (x86)\sigrok\sigrok-cli\sigrok-cli'

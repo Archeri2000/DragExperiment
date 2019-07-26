@@ -95,7 +95,7 @@ class CallbackManager:
 def accelCallback(rpm, timestamp):
     global reading_list
     # Exit condition - RPM reach max
-    if rpm >= MAX_RPM:
+    if rpm >= MAX_RPM and reading_list[0][0] != 0 and rpm / reading_list[0][0] < 5:
         reading_list = []
         # Change to calibration mode
         cm.changeMode(CALIB)
